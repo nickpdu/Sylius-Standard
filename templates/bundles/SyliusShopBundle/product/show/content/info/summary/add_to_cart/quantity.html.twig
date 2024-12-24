@@ -1,0 +1,14 @@
+<div class="mb-4">
+    {{ form_row(hookable_metadata.context.form.cartItem.quantity, sylius_test_form_attribute('quantity')) }}
+</div>
+<script>
+var quantityInput = document.querySelector('input[name="sylius_shop_add_to_cart[cartItem][quantity]"]');
+
+quantityInput.addEventListener('change', function() {
+    var newValue = quantityInput.value;
+    console.log(newValue);
+    if(newValue == 70){
+        alert('Great Choice!');
+    }
+});
+</script>

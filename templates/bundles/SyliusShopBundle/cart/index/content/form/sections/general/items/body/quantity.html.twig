@@ -1,0 +1,17 @@
+{% set form = hookable_metadata.context.form %}
+
+<td>
+    {{ form_row(form.quantity, sylius_test_form_attribute('cart-item-quantity')|sylius_merge_recursive({label: false, row_attr: {'class': 'mt-3 qnty-alert'}})) }}
+</td>
+
+<script>
+var quantityInput = document.querySelector('.qnty-alert input');
+
+quantityInput.addEventListener('change', function() {
+    var newValue = quantityInput.value;
+    console.log(newValue);
+    if(newValue == 70){
+        alert('Great Choice!');
+    }
+});
+</script>
