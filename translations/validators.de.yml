@@ -1,0 +1,4 @@
+sylius:
+    cart_item:
+        quantity:
+            multiple_of_ten: "Die Menge muss ein Vielfaches von 10 sein."

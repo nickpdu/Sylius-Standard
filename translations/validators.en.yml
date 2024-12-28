@@ -1,0 +1,4 @@
+sylius:
+    cart_item:
+        quantity:
+            multiple_of_ten: Quantity must be a multiple of 10.

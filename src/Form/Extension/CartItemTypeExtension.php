@@ -22,6 +22,7 @@ use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Expression;
 use Symfony\Component\Validator\Constraints\Range;
 
 /**
@@ -48,13 +49,18 @@ final class CartItemTypeExtension extends AbstractTypeExtension
                     'notInRangeMessage' => 'sylius.cart_item.quantity.not_in_range',
                     'groups' => 'sylius',
                 ]),
+                new Expression([
+                    'expression' => 'value % 10 == 0',
+                    'message' => 'sylius.cart_item.quantity.multiple_of_ten',
+                    'groups' => 'sylius',
+                ]),
             ],
         ];
 
         if($builder->getName() == 'cartItem'){
             $config['data'] = 10;
         }
-        
+
         $builder->add('quantity', IntegerType::class, $config);
 
         if (isset($options['product']) && $options['product']->hasVariants() && !$options['product']->isSimple()) {
